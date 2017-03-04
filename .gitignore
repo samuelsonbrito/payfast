@@ -56,3 +56,7 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# files imagens e videos
+*.jpg
+*.mp4
