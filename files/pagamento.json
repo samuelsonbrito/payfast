@@ -1,0 +1,20 @@
+{
+  "pagamento":{
+    "forma_de_pagamento": "cartao",
+    "valor": 10,
+    "moeda": "BRL",
+    "descricao": "criando um pagamento"
+  },
+  "cartao":{
+    "numero":1234123412341234,
+    "bandeira":"visa",
+    "ano_de_expiracao":2016,
+    "mes_de_expiracao":12,
+    "cvv":123
+  }
+}
+
+
+
+curl http://localhost:3000/correios/calculo-prazo -X POST -v -H "Content-type: application/json" -d '{"nCdServico":"40010","sCepOrigem":"04101300","sCepDestino":"65000600"}'
+curl http://localhost:3000/pagamentos/pagamento -X POST -v -H "Content-type: application/json" -d '{"pagamento":{"forma_de_pagamento": "cartao","valor": 10,"moeda": "BRL","descricao": "criando um pagamento"},"cartao":{"numero":1234123412341234,"bandeira":"visa","ano_de_expiracao":2016,"mes_de_expiracao":12,"cvv":123}}'
