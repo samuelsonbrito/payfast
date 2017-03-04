@@ -8,8 +8,8 @@ module.exports = ()=>{
   return CorreiosSOAPClient;
 }
 
-CorreiosSOAPClient.prototype.calculaPrazo = (args, callback)=> {
-  soap.createClient(this._url, (err,cliente)=> {
+CorreiosSOAPClient.prototype.calculaPrazo = function(args, callback) {
+  soap.createClient(this._url, function(err,cliente) {
     cliente.CalcPrazo(args, callback);
   });
 }
