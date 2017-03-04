@@ -1,10 +1,10 @@
-module.exports = function(app){
-  app.get('/pagamentos', function(req, res) {
+module.exports = (app)=>{
+  app.get('/pagamentos', (req, res)=> {
     console.log('recebido o require');
     res.send('OK');
   });
 
-  app.delete('/pagamentos/pagamento/:id',function(req, res){
+  app.delete('/pagamentos/pagamento/:id',(req, res)=>{
 
     var pagamento = {};
     var id = req.params.id;
@@ -15,7 +15,7 @@ module.exports = function(app){
     var connection = app.persistencia.connectionFactory();
     var pagamentoDAO = new app.persistencia.PagamentoDAO(connection);
 
-    pagamentoDAO.atualiza(pagamento, function(err){
+    pagamentoDAO.atualiza(pagamento, (err)=>{
 
       if(err){
         res.status(500).send(err);
@@ -30,7 +30,7 @@ module.exports = function(app){
 
   });
 
-  app.put('/pagamentos/pagamento/:id', function(req, res){
+  app.put('/pagamentos/pagamento/:id', (req, res)=>{
 
     var pagamento = {};
     var id = req.params.id;
@@ -41,7 +41,7 @@ module.exports = function(app){
     var connection = app.persistencia.connectionFactory();
     var pagamentoDAO = new app.persistencia.PagamentoDAO(connection);
 
-    pagamentoDAO.atualiza(pagamento, function(err){
+    pagamentoDAO.atualiza(pagamento, (err)=>{
 
       if(err){
         res.status(500).send(err);
@@ -56,7 +56,7 @@ module.exports = function(app){
 
   });
 
-  app.get('/pagamentos/pagamento/:id',function(req, res){
+  app.get('/pagamentos/pagamento/:id',(req, res)=>{
     var id = req.params.id;
     console.log('consultando pagamento: '+id);
 
@@ -77,7 +77,7 @@ module.exports = function(app){
 
   });
 
-  app.post('/pagamentos/pagamento', function(req, res){
+  app.post('/pagamentos/pagamento', (req, res)=>{
 
     req.assert("pagamento.forma_de_pagamento","Forma de pagamento eh obrigatorio").notEmpty();
     req.assert("pagamento.valor","Valor eh obrigatorio e deve ser um decimal").notEmpty().isFloat();
@@ -98,7 +98,7 @@ module.exports = function(app){
     var connection = app.persistencia.connectionFactory();
     var pagamentoDAO = new app.persistencia.PagamentoDAO(connection);
 
-    pagamentoDAO.salva(pagamento, function(err, result){
+    pagamentoDAO.salva(pagamento, (err, result)=>{
 
       if(err){
         res.status(500).send(err);
@@ -111,7 +111,7 @@ module.exports = function(app){
 
           var clienteCartoes = new app.servicos.clientCartoes();
 
-          clienteCartoes.autoriza(cartao, function(error,request,response,results){
+          clienteCartoes.autoriza(cartao, (error,request,response,results)=>{
 
             if(error){
               console.log(error);

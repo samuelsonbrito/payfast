@@ -6,11 +6,11 @@ var client = new memcached('localhost:11211',{
   remove: true
 });
 
-client.set('pagamento-20',{'id':20}, 10000, function(){
+client.set('pagamento-20',{'id':20}, 10000, ()=>{
   console.log('nova chave adicionada ao cache: pagamento-20');
 });
 
-client.get('pagamento-20', function(err,result){
+client.get('pagamento-20', (err,result)=>{
   if(err || !result){
     console.log('MISS - chave nao encontrada');
   }else{

@@ -4,12 +4,12 @@ function CorreiosSOAPClient() {
   this._url = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.asmx?wsdl';
 }
 
-module.exports = function(){
+module.exports = ()=>{
   return CorreiosSOAPClient;
 }
 
-CorreiosSOAPClient.prototype.calculaPrazo = function(args, callback) {
-  soap.createClient(this._url, function(err,cliente) {
+CorreiosSOAPClient.prototype.calculaPrazo = (args, callback)=> {
+  soap.createClient(this._url, (err,cliente)=> {
     cliente.CalcPrazo(args, callback);
   });
 }

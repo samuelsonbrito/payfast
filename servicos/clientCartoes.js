@@ -6,10 +6,10 @@ function CartoesClient(){
   });
 }
 
-CartoesClient.prototype.autoriza = function(cartao, callback){
+CartoesClient.prototype.autoriza = (cartao, callback)=>{
   this._cliente.post('/cartoes/autoriza', cartao, callback);
 }
 
-module.exports = function(){
+module.exports = ()=>{
   return CartoesClient;
 }
