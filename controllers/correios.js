@@ -6,6 +6,7 @@ module.exports = function(app){
     var dadosDaEntrega = req.body;
 
     var correiosSOAPClient = new app.servicos.correiosSOAPClient();
+    
     correiosSOAPClient.calculaPrazo(dadosDaEntrega, function(error,result){
       if(error){
         res.status(500).send(erro);

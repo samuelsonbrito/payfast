@@ -6,7 +6,7 @@ function CartoesClient(){
   });
 }
 
-CartoesClient.prototype.autoriza = (cartao, callback)=>{
+CartoesClient.prototype.autoriza = function(cartao, callback){
   this._cliente.post('/cartoes/autoriza', cartao, callback);
 }
 
